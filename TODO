@@ -1,0 +1,5 @@
+Optional parameters should be last, so try to move assert* error string to the end.
+
+New tests:
+* assertEmpty, assertNotEmpty for files, to avoid assert*Null + cat-ing. Use stat?
+* assertBetween, takes value + two boundaries. Should work for integers, floats and strings.
