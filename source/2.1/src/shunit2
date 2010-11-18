@@ -216,7 +216,7 @@ assertNotNull()
     shunit_message_="${shunit_message_}$1"
     shift
   fi
-  assertTrue "${shunit_message_}" '[ -n "${1:-}" ]'
+  assertTrue "${shunit_message_}" $([ -n "${1:-}" ]; echo $?)
   shunit_return=$?
 
   unset shunit_message_
