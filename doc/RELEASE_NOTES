@@ -1,0 +1,709 @@
+Release Notes for shUnit2 2.1.0
+===============================
+
+This release was branched from shUnit2 2.0.1. It mostly adds new functionality,
+but there are couple of bugs fixed from the previous release.
+
+See the ``CHANGES-2.1.rst`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+This list of platforms comes from the latest version of log4sh as shUnit2 is
+used in the testing of log4sh on each of these platforms.
+
+Cygwin
+
+- bash 3.2.9(10)
+- pdksh 5.2.14
+
+Linux
+
+- bash 3.1.17(1), 3.2.10(1)
+- dash 0.5.3
+- ksh 1993-12-28
+- pdksh 5.2.14
+- zsh 4.3.2 (does not work)
+
+Mac OS X 10.4.8 (Darwin 8.8)
+
+- bash 2.05b.0(1)
+- ksh 1993-12-28
+
+Solaris 8 U3 (x86)
+
+- /bin/sh
+- bash 2.03.0(1)
+- ksh M-11/16/88i
+
+Solaris 10 U2 (sparc)
+
+- /bin/sh
+- bash 3.00.16(1)
+- ksh M-11/16/88i
+
+Solaris 10 U2 (x86)
+
+- /bin/sh
+- bash 3.00.16(1)
+- ksh M-11/16/88i
+
+
+New Features
+------------
+
+Test skipping
+
+  Support added for test "skipping". A skip mode can be enabled so that
+  subsequent ``assert`` and ``fail`` functions that are called will be recorded
+  as "skipped" rather than as "passed" or "failed". This functionality can be
+  used such that when a set of tests makes sense on one platform but not on
+  another, they can be effectively disabled without altering the total number
+  of tests.
+
+  One example might be when something is supported under ``bash``, but not
+  under a standard Bourne shell.
+
+  New functions: ``startSkipping()``, ``endSkipping``, ``isSkipping``
+
+
+Changes and Enhancements
+------------------------
+
+Moving to the use of `reStructured Text
+<http://docutils.sourceforge.net/rst.html>`_ for documentation. It is easy to
+read and edit in textual form, but converts nicely to HTML.
+
+The report format has changed. Rather than including a simple "success"
+percentage at the end, a percentage is given for each type of test.
+
+
+Bug Fixes
+---------
+
+The ``fail()`` function did not output the optional failure message.
+
+Fixed the ``Makefile`` so that the DocBook XML and XSLT files would be
+downloaded before documentation parsing will continue.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+None.
+
+
+.. $Revision$
+.. vim:fileencoding=latin1:spell:syntax=rst:textwidth=80
+Release Notes for shUnit2 2.1.1
+===============================
+
+This is mainly a bug fix release, but it also incorporates a realignment with
+the JUnit 4 code. Asserts now provide better failure messages, and the failure
+functions no longer perform tests.
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+This list of platforms comes from the latest version of log4sh as shUnit2 is
+used in the testing of log4sh on each of these platforms.
+
+Cygwin
+
+- bash 3.2.15(13)
+- pdksh 5.2.14
+
+Linux
+
+- bash 3.1.17(1), 3.2.10(1)
+- dash 0.5.3
+- ksh 1993-12-28
+- pdksh 5.2.14
+- zsh 4.3.2 (does not work)
+
+Mac OS X 10.4.9 (Darwin 8.9.1)
+
+- bash 2.05b.0(1)
+- ksh 1993-12-28
+
+Solaris 8 U3 (x86)
+
+- /bin/sh
+- bash 2.03.0(1)
+- ksh M-11/16/88i
+
+Solaris 10 U2 (sparc, x86)
+
+- /bin/sh
+- bash 3.00.16(1)
+- ksh M-11/16/88i
+
+
+New Features
+------------
+
+None.
+
+
+Changes and Enhancements
+------------------------
+
+The internal test in ``assertFalse()`` now accepts any non-zero value as false.
+
+The ``assertTrue()`` and ``assertFalse()`` functions now accept an integer value
+for a conditional test. A value of '0' is considered 'true', while any non-zero
+value is considered 'false'.
+
+Self-testing unit tests were added.
+
+
+Bug Fixes
+---------
+
+The ``fail()`` assert now honors skipping.
+
+The ``docs-docbook-prep`` target now works properly.
+
+All asserts now properly unset their variables.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+Functions do not properly test for an invalid number of arguments.
+
+
+.. vim:fileencoding=latin1:ft=rst:spell:textwidth=80
+Release Notes for shUnit2 2.1.2
+===============================
+
+This release adds initial support for the zsh shell. Due to some differences
+with this shell as compared with others, some special checks have been added,
+and there are some extra requirements necessary when this shell is to be used.
+
+To use zsh with shUnit2, the following two requirements must be met:
+* The ``shwordsplit`` option must be set.
+* The ``function_argzero`` option must be unset.
+
+Please read the Shell Errata section of the documentation for guidance on how
+to meet these requirements.
+
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+This list of platforms comes from the latest version of log4sh as shUnit2 is
+used in the testing of log4sh on each of these platforms.
+
+Linux
+
+- bash 3.1.17(1), 3.2.25(1)
+- dash 0.5.4
+- ksh 1993-12-28
+- pdksh 5.2.14
+- zsh 4.2.5, 4.3.4
+
+Mac OS X 10.4.11 (Darwin 8.11.1)
+
+- bash 2.05b.0(1)
+- ksh 1993-12-28
+- zsh 4.2.3
+
+Solaris 10 U3 (x86)
+
+- /bin/sh
+- bash 3.00.16(1)
+- ksh M-11/16/88i
+- zsh 4.2.1
+
+
+New Features
+------------
+
+Support for the zsh shell.
+
+
+Changes and Enhancements
+------------------------
+
+Added some argument count checks.
+
+
+Bug Fixes
+---------
+
+None.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+Functions do not properly test for an invalid number of arguments.
+
+ksh and pdksh do not pass null arguments (i.e. empty strings as '') properly,
+and as such checks do not work properly.
+
+zsh requires the ``shwordsplit`` option to be set, and the ``function_argzero``
+option to be unset for proper operation.
+
+
+.. vim:fileencoding=latin1:ft=rst:spell:textwidth=80
+Release Notes for shUnit2 2.1.3
+===============================
+
+This release is minor feature release. It improves support for zsh (although it
+still isn't what it could be) and adds automated testing framework support by
+returning a non-zero exit when tests fail.
+
+To use zsh with shUnit2, the following two requirements must be met:
+* The ``shwordsplit`` option must be set.
+* The ``function_argzero`` option must be unset.
+
+Please read the Shell Errata section of the documentation for guidance on how
+to meet these requirements.
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+Cygwin
+
+- bash 3.2.33(18)
+- pdksh 5.2.14
+
+Linux
+
+- bash 3.2.33(1)
+- dash 0.5.4
+- ksh 1993-12-28
+- pdksh 5.2.14
+- zsh 4.3.4
+
+Mac OS X 10.5.2 (Darwin 9.2.2)
+
+- bash 3.2.17(1)
+- ksh 1993-12-28
+- zsh 4.3.4
+
+Solaris 11 x86 (Nevada 77)
+
+- /bin/sh
+- bash 3.2.25(1)
+- ksh M-11/16/88i
+- zsh 4.3.4
+
+
+New Features
+------------
+
+None.
+
+
+Changes and Enhancements
+------------------------
+
+Support for automated testing frameworks.
+
+
+Bug Fixes
+---------
+
+Fixed some issues with zsh support.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+Functions do not properly test for an invalid number of arguments.
+
+ksh and pdksh do not pass null arguments (i.e. empty strings as '') properly,
+and as such checks do not work properly.
+
+zsh requires the ``shwordsplit`` option to be set, and the ``function_argzero``
+option to be unset for proper operation.
+
+
+.. vim:fileencoding=latin1:ft=rst:spell:textwidth=80
+Release Notes for shUnit2 2.1.4
+===============================
+
+This release contains lots of bug fixes and changes. Mostly, it fixes zsh
+support in zsh 3.0, and the handling of null values in ksh.
+
+To use zsh with shUnit2, the following requirement must be met:
+
+- The ``shwordsplit`` option must be set.
+
+Please read the Shell Errata section of the documentation for guidance on how
+to meet these requirements.
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+Cygwin
+
+- bash 3.2.39(19)
+- pdksh 5.2.14
+- zsh 4.3.4
+
+Linux (Ubuntu Dapper 6.06)
+
+- bash 3.1.17(1)
+- pdksh 5.2.14
+- zsh 4.2.5
+
+Linux (Ubuntu Hardy 8.04)
+
+- bash 3.2.39(1)
+- dash 0.5.4
+- ksh 1993-12-28
+- pdksh 5.2.14
+- zsh 4.3.4
+
+Mac OS X 10.5.4 (Darwin 9.4.0)
+
+- bash 3.2.17(1)
+- ksh 1993-12-28
+- zsh 4.3.4
+
+Solaris 9 U6 x86
+
+- /bin/sh
+- bash 2.05.0(1)
+- ksh M-11/16/88i
+- zsh 3.0.8
+
+Solaris 11 x86 (Nevada 77)
+
+- /bin/sh
+- bash 3.2.25(1)
+- ksh M-11/16/88i
+- zsh 4.3.4
+
+
+New Features
+------------
+
+Support added to output assert source line number as part of assert messages.
+
+
+Changes and Enhancements
+------------------------
+
+Support for automated testing frameworks.
+
+Added argument count error checking to all functions.
+
+
+Bug Fixes
+---------
+
+Fixed some issues with ksh and zsh support.
+
+Fixed off-by-one of exit value in trap handler.
+
+Fixed handling of null values under ksh.
+
+Fixed bug in last resort temporary directory creation.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+zsh requires the ``shwordsplit`` option to be set.
+
+Line numbers in assert messages do not work properly with Bash 2.x.
+
+.. vim:fileencoding=latin1:ft=rst:spell:tw=80
+Release Notes for shUnit2 2.1.5
+===============================
+
+This release contains several bug fixes and changes. Additionally, it includes
+a rewrite of the test output to better match JUnit and PyUnit.
+
+This version also includes a slightly expanded set of coding standards by which
+shUnit2 is coded. It should help anyone reading the code to better understand
+it.
+
+
+
+Please read the Shell Errata section of the documentation for guidance on how
+to meet these requirements.
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+
+Tested Platforms
+----------------
+
+Cygwin
+
+- bash 3.2.39(20)
+- ksh (sym-link to pdksh)
+- pdksh 5.2.14
+- zsh 4.3.4
+
+Linux (Ubuntu Dapper 6.06)
+
+- bash 3.1.17(1)
+- ksh M-1993-12-28
+- pdksh 5.2.14-99/07/13.2
+- zsh 4.2.5
+
+Linux (Ubuntu Hardy 8.04)
+
+- bash 3.2.39(1)
+- dash 0.5.4
+- ksh M-1993-12-28
+- pdksh 5.2.14-99/07/13.2
+- zsh 4.3.4
+
+Mac OS X 10.5.4 (Darwin 9.4.0)
+
+- bash 3.2.17(1)
+- ksh M-1993-12-28
+- zsh 4.3.4
+
+Solaris 9 U6 x86
+
+- /bin/sh
+- bash 2.05.0(1)
+- ksh M-11/16/88i
+- zsh 3.0.8
+
+Solaris 11 x86 (Nevada 77)
+
+- /bin/sh
+- bash 3.2.25(1)
+- ksh M-11/16/88i
+- zsh 4.3.4
+
+
+New Features
+------------
+
+Support added for output assert source line number as part of assert messages.
+
+Issue #2: Added assertNotEquals() assert.
+
+Provided a public ``shunit_tmpDir`` variable that can be used by unit test
+scripts that need automated and guaranteed cleanup.
+
+
+Changes and Enhancements
+------------------------
+
+Issue #3: Removed the check for unset variables as shUnit2 should not expect
+scripts being tested to be clean.
+
+Issue #4: Rewrote the test summary. It is now greatly simplified and much more
+script friendly.
+
+Issue #5: Fixed the documentation around the usage of failures.
+
+Issue #9: Added unit tests and improved documentation around the use of macros.
+
+Code updated to meet documented coding standards.
+
+Improved code reuse of ``_shunit_exit()`` and ``_shunit_fatal()`` functions.
+
+All output except shUnit2 error messages now goes to STDOUT.
+
+Converted DocBook documentation to reStructuredText for easier maintenance.
+
+
+Bug Fixes
+---------
+
+Issue #1: Fixed bug in rap code where certain types of exit conditions did not
+generate the ending report.
+
+Issue #7: Fixed duplicated printing of messages passed to asserts.
+
+Fixed bugs in ``shlib_relToAbsPath()`` in ``shlib``.
+
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+Zsh requires the ``shwordsplit`` option to be set. See the documentation for
+examples of how to do this.
+
+Line numbers in assert messages do not work properly with BASH 2.x.
+
+The Bourne shell of Solaris, BASH 2.x, and Zsh 3.0.x do not properly catch the
+SIGTERM signal. As such, shell interpreter failures due to such things as
+unbound variables cannot be caught. (See ``shunit_test_misc.sh``)
+
+
+.. vim:fileencoding=latin1:ft=rst:spell:tw=80
+Release Notes for shUnit2 2.1.6
+===============================
+
+This release contains some bug fixes and changes. It is also the first release
+to support running shunit2 as a standalone program.
+
+Please read the Shell Errata section of the documentation for guidance on how
+to meet these requirements.
+
+See the ``CHANGES-2.1.txt`` file for a full list of changes.
+
+New Features
+------------
+
+Support for running shUnit2 as a standalone program. This makes it possible for
+users to execute their unit tests in a manner that is not dependent on the
+location an OS distribution maintainer chose to place shUnit2 in the file
+system.
+
+Changes and Enhancements
+------------------------
+
+Renamed the public ``shunit_tmpDir`` variable to ``SHUNIT_TMPDIR`` to be more
+consistent with the ``TMPDIR`` variable.
+
+Bug Fixes
+---------
+
+Fixed issue where shunit2 would fail on some distributions when creating a
+temporary directory because the **od** command was not present.
+
+Deprecated Features
+-------------------
+
+None.
+
+
+Known Bugs and Issues
+---------------------
+
+Zsh requires the ``shwordsplit`` option to be set. See the documentation for
+examples of how to do this.
+
+Line numbers in assert messages do not work properly with BASH 2.x.
+
+The Bourne shell of Solaris, BASH 2.x, and Zsh 3.0.x do not properly catch the
+SIGTERM signal. As such, shell interpreter failures due to such things as
+unbound variables cannot be caught. (See ``shunit_test_misc.sh``)
+
+Tested Platforms
+----------------
+
+Cygwin (Windows XP SP2)
+
+- bash 3.2.39(23)
+- dash 0.5.5.1
+- ksh (sym-link to pdksh)
+- pdksh 5.2.14
+- zsh 4.3.9
+
+FreeBSD 7.2 (FreeNAS 0.7.1)
+
+- bash 4.0.35(1)
+
+Linux (Ubuntu Dapper 6.06)
+
+- bash 3.1.17(1)
+- dash 0.5.3
+- pdksh 5.2.14-99/07/13.2
+- zsh 4.2.5
+
+Linux (Ubuntu Hardy 8.04)
+
+- bash 3.2.39(1)
+- dash 0.5.4
+- ksh M-1993-12-28
+- pdksh 5.2.14-99/07/13.2
+- zsh 4.3.4
+
+Linux (Ubuntu Lucid 10.04)
+
+- bash 4.1.5(1)
+- dash 0.5.5.1
+- ksh JM-93t+-2009-05-01
+- pdksh 5.2.14-99/07/13.2
+- zsh 4.3.10
+
+Mac OS X 10.5.8
+
+- bash 3.2.17(1)
+- ksh M-1993-12-28
+- zsh 4.3.4
+
+Mac OS X 10.6.3
+
+- bash 3.2.48(1)
+- ksh M-1993-12-28
+- zsh 4.3.9
+
+Solaris 8 U7 x86
+
+- /bin/sh
+- bash 2.03.0(1)
+- ksh M-11/16/88i
+- zsh 3.0.6
+
+Solaris 9 U6 x86
+
+- /bin/sh
+- bash 2.05.0(1)
+- ksh M-11/16/88i
+- zsh 3.0.8
+
+Solaris 11 x86 (Nexenta 3.0 beta 3)
+
+- /bin/sh
+- bash 3.2.48(1)
+- ksh M-11/16/88i
+- zsh 4.3.4
+
+
+.. vim:fileencoding=latin1:ft=rst:spell:tw=80
