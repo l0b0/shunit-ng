@@ -6,10 +6,10 @@
 # Released under the LGPL (GNU Lesser General Public License)
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 unit test for macros.
+# shunit-ng unit test for macros.
 
 # load test helpers
-. ./shunit2_test_helpers
+. ./shunitng_test_helpers
 
 #------------------------------------------------------------------------------
 # suite tests
@@ -244,6 +244,6 @@ oneTimeSetUp()
   stderrF="${tmpDir}/stderr"
 }
 
-# load and run shUnit2
+# load and run shunit-ng
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
 . ${TH_SHUNIT}

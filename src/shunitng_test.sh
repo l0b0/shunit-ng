@@ -6,7 +6,7 @@
 # Released under the LGPL (GNU Lesser General Public License)
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 unit test suite runner.
+# shunit-ng unit test suite runner.
 #
 # This script runs all the unit tests that can be found, and generates a nice
 # report of the tests.
@@ -14,7 +14,7 @@
 MY_NAME=`basename $0`
 MY_PATH=`dirname $0`
 
-PREFIX='shunit2_test_'
+PREFIX='shunitng_test_'
 SHELLS='/bin/sh /bin/bash /bin/dash /bin/ksh /bin/pdksh /bin/zsh'
 TESTS=''
 for test in ${PREFIX}[a-z]*.sh; do
@@ -23,7 +23,7 @@ done
 
 # load common unit test functions
 . ../lib/versions
-. ./shunit2_test_helpers
+. ./shunitng_test_helpers
 
 usage()
 {

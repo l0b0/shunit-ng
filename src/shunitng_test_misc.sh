@@ -7,16 +7,16 @@
 #
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 unit tests of miscellaneous things
+# shunit-ng unit tests of miscellaneous things
 
 # load test helpers
-. ./shunit2_test_helpers
+. ./shunitng_test_helpers
 
 #------------------------------------------------------------------------------
 # suite tests
 #
 
-# Note: the test script is prefixed with '#' chars so that shUnit2 does not
+# Note: the test script is prefixed with '#' chars so that shunit-ng does not
 # incorrectly interpret the embedded functions as real functions.
 testUnboundVariable()
 {
@@ -74,6 +74,6 @@ oneTimeSetUp()
   testF="${tmpDir}/unittest"
 }
 
-# load and run shUnit2
+# load and run shunit-ng
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
 . ${TH_SHUNIT}

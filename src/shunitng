@@ -5,12 +5,12 @@
 # Copyright 2008 Kate Ward. All Rights Reserved.
 # Released under the LGPL (GNU Lesser General Public License)
 #
-# shUnit2 -- Unit testing framework for Unix shell scripts.
-# http://code.google.com/p/shunit2/
+# shunit-ng -- Unit testing framework for Unix shell scripts.
+# https://github.com/l0b0/shunit-ng/wiki
 #
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 is a xUnit based unit test framework for Bourne shell scripts. It is
+# shunit-ng is a xUnit based unit test framework for Bourne shell scripts. It is
 # based on the popular JUnit unit testing framework for Java.
 
 # return if shunit already loaded
@@ -22,9 +22,9 @@ SHUNIT_TRUE=0
 SHUNIT_FALSE=1
 SHUNIT_ERROR=2
 
-_shunit_warn() { echo "shunit2:WARN $@" >&2; }
-_shunit_error() { echo "shunit2:ERROR $@" >&2; }
-_shunit_fatal() { echo "shunit2:FATAL $@" >&2; exit ${SHUNIT_ERROR}; }
+_shunit_warn() { echo "shunitng:WARN $@" >&2; }
+_shunit_error() { echo "shunitng:ERROR $@" >&2; }
+_shunit_fatal() { echo "shunitng:FATAL $@" >&2; exit ${SHUNIT_ERROR}; }
 
 # specific shell checks
 if [ -n "${ZSH_VERSION:-}" ]; then
@@ -34,7 +34,7 @@ if [ -n "${ZSH_VERSION:-}" ]; then
   fi
   if [ -z "${SHUNIT_PARENT:-}" ]; then
     _shunit_fatal "zsh does not pass \$0 through properly. please declare \
-\"SHUNIT_PARENT=\$0\" before calling shUnit2"
+\"SHUNIT_PARENT=\$0\" before calling shunitng"
   fi
 fi
 
@@ -585,8 +585,8 @@ isSkipping()
 #
 # This function can be optionally overridden by the user in their test suite.
 #
-# If this function exists, it will be called when shunit2 is sourced. If it
-# does not exist, shunit2 will search the parent script for all functions
+# If this function exists, it will be called when shunit-ng is sourced. If it
+# does not exist, shunit-ng will search the parent script for all functions
 # beginning with the word 'test', and they will be added dynamically to the
 # test suite.
 #
@@ -661,7 +661,7 @@ suite_addTest()
 #tearDown() { :; }  # DO NOT UNCOMMENT THIS FUNCTION
 
 #------------------------------------------------------------------------------
-# internal shUnit2 functions
+# internal shunit-ng functions
 #
 
 # Create a temporary directory to store various run-time files in.

@@ -7,10 +7,10 @@
 #
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 unit test for failure functions
+# shunit-ng unit test for failure functions
 
 # load common unit-test functions
-. ./shunit2_test_helpers
+. ./shunitng_test_helpers
 
 #-----------------------------------------------------------------------------
 # suite tests
@@ -84,6 +84,6 @@ oneTimeSetUp()
   MSG='This is a test message'
 }
 
-# load and run shUnit2
+# load and run shunit-ng
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
 . ${TH_SHUNIT}

@@ -6,16 +6,16 @@
 # Released under the LGPL (GNU Lesser General Public License)
 # Author: kate.ward@forestent.com (Kate Ward)
 #
-# shUnit2 unit test for standalone operation.
+# shunit-ng unit test for standalone operation.
 #
-# This unit test is purely to test that calling shunit2 directly, while passing
+# This unit test is purely to test that calling shunit-ng directly, while passing
 # the name of a unit test script, works. When run, this script determines if it
 # is running as a standalone program, and calls main() if it is.
 
 ARGV0=`basename "$0"`
 
 # load test helpers
-. ./shunit2_test_helpers
+. ./shunitng_test_helpers
 
 #------------------------------------------------------------------------------
 # suite tests
@@ -36,6 +36,6 @@ main()
 }
 
 # are we running as a standalone?
-if [ "${ARGV0}" = 'shunit2_test_standalone.sh' ]; then
+if [ "${ARGV0}" = 'shunitng_test_standalone.sh' ]; then
   if [ $# -gt 0 ]; then main "$@"; else main; fi
 fi
